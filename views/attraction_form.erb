@@ -1,0 +1,56 @@
+<h1 class="jumbotron">Attractions</h1>
+
+<h3>You can click on the Attraction from a list to edit it:</h3>
+<% if @attractions.any?() %>
+<ul>
+  <% @attractions.each do |attraction| %>
+  <li><a href="/attractions/<%= attraction.id() %>/edit"><%= attraction.name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no attractions yet!</p>
+<% end %>
+<br>
+
+
+
+<h3>Add New Attraction to a list:</h3>
+<form action="/attraction_form" method="post">
+  <div class="form-group">
+    <label class="form-label" for='name'>Name:</label>
+    <input class="form-control" id='name' name='name' type="text">
+
+    <label class="form-label" for='description'>Description:</label>
+    <input class="form-control" id='description' name='description' type="text">
+
+    <label class="form-label" for='price'>Price:</label>
+    <input class="form-control" id='price' name='price' type="text">
+
+    <p>Season:</p>
+    <div class="checkbox">
+      <label><input type="checkbox" value="winter">Winter</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="spring">Spring</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="summer">Summer</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="fall">Fall</label>
+    </div>
+
+    <input type="hidden" name="_method" value="patch">
+    <br>
+    <br>
+    <h3>Add Tags to it:</h3>
+    <% @tags.each do |tag| %>
+      <div class="checkbox">
+        <label for="add_tags">
+          <input type="checkbox" name="tag_ids[]" value="<%= tag.id %>"><%= tag.name %><br>
+        </label>
+      </div>
+    <% end %>
+    <button type="submit" class="button btn">Add Attraction</button>
+  </div>
+</form>
