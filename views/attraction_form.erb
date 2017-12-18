@@ -42,12 +42,11 @@
 
     <input type="hidden" name="_method" value="patch">
     <br>
-    <br>
-    <h3>Add Tags to it:</h3>
+    <h5>Add Tags to it:</h5>
     <% @tags.each do |tag| %>
       <div class="checkbox">
         <label for="add_tags">
-          <input type="checkbox" name="tag_ids[]" value="<%= tag.id %>"><%= tag.name %><br>
+        <input type="checkbox" name="tag_ids[]" value="<%= tag.id %>"><%= tag.name %><br>
         </label>
       </div>
     <% end %>
