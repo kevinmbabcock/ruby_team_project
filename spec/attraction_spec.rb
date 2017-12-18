@@ -9,29 +9,36 @@ describe 'Attraction' do
   end
 
   it 'validates the presence of a name' do
-    attraction = Attraction.new({:name => ""})
+    attraction = Attraction.new({:name => "", :description => "none"})
     expect(attraction.save).to(eq(false))
   end
 
   it 'validates the length of the name' do
-    attraction = Attraction.new({:name => "a"*51})
+    attraction = Attraction.new({:name => "a"*51, :description => "none"})
     expect(attraction.save).to(eq(false))
   end
 
   it 'validates that the name of the Attraction is unique' do
-    attraction1 = Attraction.create({:name => "Space Needle", :description => "none"})
-    attraction2 = Attraction.new({:name => "Space Needle", :description => "not available"})
+    attraction1 = Attraction.create({:name => "field", :description => "none"})
+    attraction2 = Attraction.create({:name => "field", :description => "not available"})
     expect(attraction2.save).to(eq(false))
   end
 
   it 'validates the presence of a description' do
-    attraction = Attraction.new({:name => "space needle", :description => ""})
+    attraction = Attraction.new({:name => "name", :description => ""})
     expect(attraction.save).to(eq(false))
   end
 
   it 'validates the length of a description' do
-    attraction = Attraction.new({:name => "Space Needle", :description => "a"*201})
+    attraction = Attraction.new({:name => "name", :description => "a"*201})
     expect(attraction.save).to(eq(false))
+  end
+
+  describe '#capitalize_name' do
+    it 'capitalizes the name of the attraction' do
+      attraction = Attraction.create({:name => "waterfront", :description => "none"})
+      expect(attraction.name).to(eq("Waterfront"))
+    end
   end
 
 end
