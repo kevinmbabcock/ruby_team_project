@@ -12,4 +12,10 @@ describe(Tag) do
     tag = Tag.new({:name => ""})
     expect(tag.save).to(eq(false))
   end
+
+  it 'validates that the name is unique' do
+    tag1 = Tag.create({:name => "outdoors"})
+    tag2 = Tag.new({:name => "outdoors"})
+    expect(tag2.save).to(eq(false))
+  end
 end
