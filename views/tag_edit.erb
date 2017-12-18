@@ -1,0 +1,13 @@
+<h1>Update: <%= @tag.name%> </h1>
+<form action="/tags/<%= @tag.id() %>/edit" method="post">
+  <div class="form-group">
+    <label class="form-label" for='name'>Change tag:</label>
+    <input class="form-control" id='name' name='name' type="text">
+    <input type="hidden" name="_method" value="patch">
+    <button type="submit">Update Tag!</button>
+  </div>
+</form>
+<form action="/tags/<%= @tag.id() %>/edit" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit">Delete Tag</button>
+</form>

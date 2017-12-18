@@ -1,21 +1,5 @@
-<h1 class="jumbotron">Attractions</h1>
-
-<h3>You can click on the Attraction from a list to edit it:</h3>
-<% if @attractions.any?() %>
-<ul>
-  <% @attractions.each do |attraction| %>
-  <li><a href="/attractions/<%= attraction.id() %>/edit"><%= attraction.name() %></a></li>
-  <% end %>
-</ul>
-<% else %>
-<p>There are no attractions yet!</p>
-<% end %>
-<br>
-
-
-
-<h3>Add New Attraction to a list:</h3>
-<form action="/attraction_form" method="post">
+<h1>Update: <%= @attraction.name%> </h1>
+<form action="/attractions/<%= @attraction.id() %>/edit" method="post">
   <div class="form-group">
     <label class="form-label" for='name'>Name:</label>
     <input class="form-control" id='name' name='name' type="text">
@@ -50,6 +34,10 @@
         </label>
       </div>
     <% end %>
-    <button type="submit">Add Attraction!</button>
+    <button type="submit">Update Attraction!</button>
   </div>
+</form>
+<form action="/attractions/<%= @attraction.id() %>/edit" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit">Delete Attraction</button>
 </form>
