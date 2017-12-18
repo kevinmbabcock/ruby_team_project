@@ -1,0 +1,34 @@
+<h1 class="jumbotron">Welcome to the City Attraction Application</h1>
+
+<h3>You can add new Attraction or new Tag in this section:</h3>
+<p><a href="/tag_form">Click here to add new Tags to a list</a></p>
+<p><a href="/attraction_form">Click here to add new Attraction</a></p>
+
+
+
+<h3>Search by Tag:</h3>
+<% if @tags.any?() %>
+  <form action="/tags-search" method="post">
+    <label for="tag_id">Select tags</label>
+    <select id='tag_id' name='tag_id' type='text'>
+      <% @tags.each() do |tag| %>
+        <option value="<%= tag.id()%>"> <%= tag.name() %> </option>
+      <% end %>
+    </select>
+    <button type="submit">Search</button>
+  </form>
+<% else %>
+  <p>There are no tags yet!</p>
+<% end %>
+
+
+<h3>List of Attractions:</h3>
+<% if @attractions.any?() %>
+<ul>
+  <% @attractions.each do |attraction| %>
+  <li><a href="/attractions/<%= attraction.id() %>"><%= attraction.name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no attractions yet!</p>
+<% end %>
