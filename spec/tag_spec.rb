@@ -7,4 +7,9 @@ describe(Tag) do
     test_tag = Tag.create({:name => "tag1", :attraction_ids => [attraction1.id, attraction2.id]})
     expect(test_tag.attractions).to(eq([attraction1, attraction2]))
   end
+
+  it 'validates the presence of a name' do
+    tag = Tag.new({:name => ""})
+    expect(tag.save).to(eq(false))
+  end
 end
