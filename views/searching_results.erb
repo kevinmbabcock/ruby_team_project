@@ -1,0 +1,17 @@
+<h3>Searching tags:</h3>
+<% @tags.each do |tag| %>
+<p><%= tag.name() %></p>
+<% end %>
+<br>
+<br>
+<h3>List of matching Attractions:</h3>
+<% if @attractions.any?() %>
+<ul>
+  <% @attractions.each do |attraction| %>
+  <li><a href="/attractions/<%= attraction.id() %>"><%= attraction.name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no attractions yet!</p>
+<% end %>
+<a href="/">Home</a>
