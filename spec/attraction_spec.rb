@@ -24,12 +24,6 @@ describe 'Attraction' do
     expect(attraction2.save).to(eq(false))
   end
 
-  # it 'validates that the name of the Attraction is unique' do
-  #   attraction1 = Attraction.create({:name => "field", :description => "none"})
-  #   attraction2 = Attraction.new({:name => "field", :description => "not available"})
-  #   expect(attraction2.save).to(eq(false))
-  # end
-
   it 'validates the presence of a description' do
     attraction = Attraction.new({:name => "name", :description => ""})
     expect(attraction.save).to(eq(false))
