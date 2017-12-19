@@ -86,13 +86,13 @@ end
 patch('/attractions/:id/edit') do
   name = params[:name]
   description = params[:description]
-  price = params[:price]
   season = params[:seasons]
+  price = params[:price]
   tag_ids = params[:tag_ids]
 
   @attraction = Attraction.find(params[:id].to_i)
-  @attraction.update({:name => name, :description => description, :price => price, :season => season, :tag_ids => tag_ids})
-  
+  @attraction.custom_update(name, description, season, price, tag_ids)
+
   @attractions = Attraction.all()
   @tags = Tag.all()
   erb(:attraction_form)

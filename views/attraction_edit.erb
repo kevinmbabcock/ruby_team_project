@@ -1,4 +1,4 @@
-<h1>Update: <%= @attraction.name%> </h1>
+<h1 class="title">Update:  <%= @attraction.name%> </h1>
 <form action="/attractions/<%= @attraction.id() %>/edit" method="post">
   <div class="form-group">
     <label class="form-label" for='name'>Name:</label>
@@ -9,8 +9,8 @@
 
     <label class="form-label" for='price'>Price:</label>
     <input class="form-control" id='price' name='price' type="text">
-
-    <p>Season:</p>
+    <br>
+    <h5>Season:</h5>
     <div class="checkbox">
       <label><input type="checkbox" name="seasons[]" value="winter">  Winter</label>
     </div>
@@ -42,4 +42,5 @@
   <button type="submit">Delete Attraction</button>
 </form>
 <br>
-<a href="/">Home</a>
+<br>
+<a href="/">Home page</a>
