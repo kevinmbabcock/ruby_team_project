@@ -10,12 +10,12 @@ class Attraction < ActiveRecord::Base
   has_many :tags, through: :attraction_tags
 
   def custom_update(name, description, seasons, price, tag_ids)
-    if name
+    if name != ""
       new_name = name
     else
       new_name = self.name
     end
-    if description
+    if description != ""
       new_description = description
     else
       new_description = self.description
@@ -28,8 +28,8 @@ class Attraction < ActiveRecord::Base
     else
       new_seasons = self.season
     end
-    if price
-      new_price = price
+    if price != ""
+      new_price = price.to_f
     else
       new_price = self.price
     end
