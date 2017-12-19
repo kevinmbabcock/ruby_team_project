@@ -94,3 +94,8 @@ patch('/attractions/:id/edit') do
   @tags = Tag.all()
   erb(:attraction_form)
 end
+
+get ('/attractions/:id') do
+  @attraction = Attraction.find(params[:id].to_i)
+  erb(:attraction_details)
+end

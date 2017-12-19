@@ -1,0 +1,17 @@
+<h1 class="jumbotron"><%= @attraction.name %></h1>
+<h3>Description: </h3>
+<p><%= @attraction.description %></p>
+<h3>Season: </h3>
+<ul>
+  <% @attraction.season.split.each do |each_season| %>
+    <li><%= each_season %> </li>
+  <% end %>
+</ul>
+<h3>Price: </h3>
+<p><%= @attraction.price %></p>
+<h3>Tags: </h3>
+<ul>
+  <% @attraction.tags.each do |tag| %>
+    <li><%= tag["name"] %> </li>
+  <% end %>
+</ul>
