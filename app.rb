@@ -37,6 +37,7 @@ patch ('/attraction_form') do
   price = params[:price]
   season = params[:seasons]
   tag_ids = params[:tag_ids]
+
   @attraction = Attraction.create({:name => name, :description => description, :price => price, :season => season, :tag_ids => tag_ids, :id => nil})
   if @attraction.save()
     @attractions = Attraction.all()
@@ -88,8 +89,10 @@ patch('/attractions/:id/edit') do
   price = params[:price]
   season = params[:seasons]
   tag_ids = params[:tag_ids]
+
   @attraction = Attraction.find(params[:id].to_i)
   @attraction.update({:name => name, :description => description, :price => price, :season => season, :tag_ids => tag_ids})
+  
   @attractions = Attraction.all()
   @tags = Tag.all()
   erb(:attraction_form)
