@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20171218174558) do
   create_table "attractions", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "season"
+    t.string "season", default: [], array: true
     t.money "price", scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
