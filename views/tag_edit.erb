@@ -1,4 +1,4 @@
-<h1>Update: <%= @tag.name%> </h1>
+<h1>Update: <span class="title"> <%= @tag.name%> </span></h1>
 <form action="/tags/<%= @tag.id() %>/edit" method="post">
   <div class="form-group">
     <label class="form-label" for='name'>Change tag:</label>

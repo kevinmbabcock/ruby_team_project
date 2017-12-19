@@ -1,35 +1,47 @@
-<h1 class="jumbotron">Welcome to the City Attractions</h1>
 
-<h3>You can add new Attraction or new Tag in this section:</h3>
-<p><a href="/tag_form">Click here to add new Tags to a list</a></p>
-<p><a href="/attraction_form">Click here to add new Attraction</a></p>
-<br>
-<br>
-<h3>List of Attractions:</h3>
-<% if @attractions.any?() %>
-<ul>
-  <% @attractions.each do |attraction| %>
-  <li><a href="/attractions/<%= attraction.id() %>"><%= attraction.name() %></a></li>
+
+<div class="header">
+  <div class="seattle">
+    <p>Seattle Attractions</p>
+  </div>
+  <div class="link">
+    <a href="/tag_form">Add Tag</a>
+  </div>
+  <div class="link">
+    <a href="/attraction_form">Add Attraction</a>
+  </div>
+</div>
+
+<div class="sidebar">
+  <h4>Search by Tag:</h4>
+  <% if @tags.any?() %>
+    <form action="/tags-search" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <% @tags.each() do |tag| %>
+      <div class="checkbox">
+        <label for="add_tags">
+        <input type="checkbox" name="tag_ids[]" value="<%= tag.id %>"> <%= tag.name %><br>
+        </label>
+      </div>
+    <% end %>
+      <button type="submit">Search</button>
+    </form>
+  <% else %>
+    <p>There are no tags yet!</p>
   <% end %>
-</ul>
-<% else %>
-<p>There are no attractions yet!</p>
-<% end %>
-<br>
-<br>
-<h3>Search by Tag:</h3>
-<% if @tags.any?() %>
-  <form action="/tags-search" method="post">
-  <input type="hidden" name="_method" value="patch">
-  <% @tags.each() do |tag| %>
-    <div class="checkbox">
-      <label for="add_tags">
-      <input type="checkbox" name="tag_ids[]" value="<%= tag.id %>"><%= tag.name %><br>
-      </label>
-    </div>
+</div>
+
+
+<div class="main">
+  <h3>List of Attractions:</h3>
+  <br>
+  <% if @attractions.any?() %>
+  <ul>
+    <% @attractions.each do |attraction| %>
+    <li><a href="/attractions/<%= attraction.id() %>"><%= attraction.name() %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>There are no attractions yet!</p>
   <% end %>
-    <button type="submit">Search</button>
-  </form>
-<% else %>
-  <p>There are no tags yet!</p>
-<% end %>
+</div>

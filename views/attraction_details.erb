@@ -1,19 +1,21 @@
-<h1 class="jumbotron"><%= @attraction.name %></h1>
-<h3>Description: </h3>
-<p><%= @attraction.description %></p>
-<h3>Season: </h3>
-<ul>
-  <% @attraction.season.each do |each_season| %>
-    <li><%= each_season %> </li>
-  <% end %>
-</ul>
-<h3>Price: </h3>
-<p><%= @attraction.price %></p>
-<h3>Tags: </h3>
-<ul>
-  <% @attraction.tags.each do |tag| %>
-    <li><%= tag["name"] %> </li>
-  <% end %>
-</ul>
+<h1 class="title"><%= @attraction.name %></h1>
+<div class="description">
+  <h2>Description: </h2>
+  <p><%= @attraction.description %></p>
+  <h2>Season: </h2>
+  <ul>
+    <% @attraction.season.each do |each_season| %>
+      <li><%= each_season %> </li>
+    <% end %>
+  </ul>
+  <h2>Price: </h2>
+  <p><%= @attraction.price %></p>
+  <h2>Tags: </h2>
+  <ul>
+    <% @attraction.tags.each do |tag| %>
+      <li><%= tag["name"] %> </li>
+    <% end %>
+  </ul>
+</div>
 <br>
 <a href="/">Home</a>

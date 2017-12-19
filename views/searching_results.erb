@@ -1,16 +1,16 @@
-<br>
-<br>
-<h4>Searching tags: <%= @tags_list %></h4>
-<br>
-<br>
-<h3>List of Attractions:</h3>
-<% if @attractions.any?() %>
-<ul>
-  <% @attractions.each do |attraction| %>
-  <li><a href="/attractions/<%= attraction.id() %>"><%= attraction.name() %></a></li>
+<div class="description">
+  <h4>Searching tags: <em> <%= @tags_list %></em></h4>
+  <br>
+  <br>
+  <h3>Attractions:</h3>
+  <% if @attractions.any?() %>
+  <ul>
+    <% @attractions.each do |attraction| %>
+    <li><a href="/attractions/<%= attraction.id() %>"><%= attraction.name() %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>There are no attractions maching this criteria! Try again!</p>
   <% end %>
-</ul>
-<% else %>
-<p>There are no attractions maching this criteria! Try again!</p>
-<% end %>
+</div>
 <a href="/">Home</a>

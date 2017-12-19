@@ -1,28 +1,27 @@
-<h1 class="jumbotron">Tags</h1>
-
-<h3>You can click on the Tag from a list to edit it</h3>
-<% if @tags.any?() %>
-<ul>
-  <% @tags.each do |tag| %>
-  <li><a href="/tags/<%= tag.id() %>/edit"><%= tag.name() %></a></li>
+<h1 class="title">Tags</h1>
+<div class="list">
+  <h3>You can click on the Tag from a list to edit it</h3>
+  <% if @tags.any?() %>
+  <ul>
+    <% @tags.each do |tag| %>
+    <li><a href="/tags/<%= tag.id() %>/edit"><%= tag.name() %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>There are no tags yet!</p>
   <% end %>
-</ul>
-<% else %>
-<p>There are no tags yet!</p>
-<% end %>
-<br>
+  <br>
+</div>
 
-
-
-<h3>Add New Tag to a list</h3>
-<form action="/tag_form" method="post">
-  <div class="form-group">
-    <label class="form-label" for='name'>Type new Tag here:</label>
-    <input class="form-control" id='name' name='name' type="text">
-    <input type="hidden" name="_method" value="patch">
-    <br>
-    <button type="submit">Add Tag!</button>
-  </div>
-</form>
-
+<div class="form">
+  <h3>Add New Tag to a list: </h3>
+  <form action="/tag_form" method="post">
+    <div class="form-group">
+      <input class="form-control" id='name' name='name' type="text">
+      <input type="hidden" name="_method" value="patch">
+      <br>
+      <button type="submit">Add Tag!</button>
+    </div>
+  </form>
+</div>
 <a href="/">Home</a>
