@@ -1,6 +1,6 @@
-<h1 class="jumbotron">Attractions</h1>
+<h1 class="title">Attractions</h1>
 
-<h3>You can click on the Attraction from a list to edit it:</h3>
+<h3>Click to edit:</h3>
 <% if @attractions.any?() %>
 <ul>
   <% @attractions.each do |attraction| %>
@@ -25,8 +25,8 @@
 
     <label class="form-label" for='price'>Price:</label>
     <input class="form-control" id='price' name='price' type="text">
-
-    <p>Season:</p>
+    <br>
+    <h5>Season:</h5>
     <div class="checkbox">
       <label><input type="checkbox" name="seasons[]" value="winter">  Winter</label>
     </div>
@@ -54,4 +54,5 @@
   </div>
 </form>
 <br>
-<a href="/">Home</a>
+<br>
+<a href="/">Home page</a>
