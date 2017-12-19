@@ -1,10 +1,9 @@
-<h3>Searching tags:</h3>
-<% @tags.each do |tag| %>
-<p><%= tag.name() %></p>
-<% end %>
 <br>
 <br>
-<h3>List of matching Attractions:</h3>
+<h4>Searching tags: <%= @tags_list %></h4>
+<br>
+<br>
+<h3>List of Attractions:</h3>
 <% if @attractions.any?() %>
 <ul>
   <% @attractions.each do |attraction| %>
@@ -12,6 +11,6 @@
   <% end %>
 </ul>
 <% else %>
-<p>There are no attractions yet!</p>
+<p>There are no attractions maching this criteria! Try again!</p>
 <% end %>
 <a href="/">Home</a>

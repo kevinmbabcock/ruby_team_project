@@ -99,3 +99,28 @@ get ('/attractions/:id') do
   @attraction = Attraction.find(params[:id].to_i)
   erb(:attraction_details)
 end
+
+patch ('/tags-search') do
+  tag_ids = params[:tag_ids]
+  @tags_list = ""
+  tag_ids.each do |tag_id|
+    tag_id.to_i
+    tag = Tag.find(tag_id)
+    @tags_list.concat(tag.name).concat(", ")
+  end
+  @tags_list.chop!.chop!
+
+  @attractions = []
+  tag_ids.each do |id|
+    tag = Tag.find(id)
+    attractions = tag.attractions
+    attractions.each do |attraction|
+      @attractions.push(attraction)
+    end
+  end
+
+
+
+
+  erb(:searching_results)
+end
