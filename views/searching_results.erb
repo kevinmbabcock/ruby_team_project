@@ -1,0 +1,11 @@
+<h3>List of Attractions:</h3>
+<% if @attractions.any?() %>
+<ul>
+  <% @attractions.each do |attraction| %>
+  <li><a href="/attractions/<%= attraction.id() %>"><%= attraction.name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no attractions yet!</p>
+<% end %>
+<a href="/">Home</a>

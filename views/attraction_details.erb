@@ -3,7 +3,7 @@
 <p><%= @attraction.description %></p>
 <h3>Season: </h3>
 <ul>
-  <% @attraction.season.split.each do |each_season| %>
+  <% @attraction.season.each do |each_season| %>
     <li><%= each_season %> </li>
   <% end %>
 </ul>
@@ -15,3 +15,5 @@
     <li><%= tag["name"] %> </li>
   <% end %>
 </ul>
+<br>
+<a href="/">Home</a>
