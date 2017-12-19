@@ -19,7 +19,8 @@
 <br>
 <h3>Search by Tag:</h3>
 <% if @tags.any?() %>
-  <form action="/tags-search" method="patch">
+  <form action="/tags-search" method="post">
+  <input type="hidden" name="_method" value="patch">
   <% @tags.each() do |tag| %>
     <div class="checkbox">
       <label for="add_tags">
