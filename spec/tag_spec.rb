@@ -27,6 +27,8 @@ describe(Tag) do
   describe '#lower_case' do
     it 'makes all letters in a tag lower case' do
       tag = Tag.create({:name => "KiDS"})
+      tag2 = Tag.create({:name => "APPLES"})
+      binding.pry
       expect(tag.name).to(eq("kids"))
     end
   end
