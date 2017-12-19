@@ -1,6 +1,8 @@
 class Tag < ActiveRecord::Base
-  validates(:name, {:presence => true, :uniqueness => true, :length => {:maximum => 25}})
-  before_save(:lower_case)
+  validates(:name, {:presence => true})
+  validates(:name, :uniqueness => true)
+  validates(:name, :length => {:maximum => 25})
+  before_create(:lower_case)
   has_many :attraction_tags
   has_many :attractions, through: :attraction_tags
 
