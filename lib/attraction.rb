@@ -47,7 +47,12 @@ class Attraction < ActiveRecord::Base
   private
 
   def capitalize_name
-    self.name = self.name.capitalize
+    new_name = ""
+    names = self.name.downcase.split
+    names.each do |name|
+      new_name.concat(name.capitalize + " ")
+    end
+    self.name = new_name.chop 
   end
 
 
