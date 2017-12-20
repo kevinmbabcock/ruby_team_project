@@ -34,12 +34,12 @@
         </label>
       </div>
     <% end %>
-    <button type="submit">Update Attraction!</button>
+    <button type="submit">Update</button>
   </div>
 </form>
 <form action="/attractions/<%= @attraction.id() %>/edit" method="post">
   <input name="_method" type="hidden" value="delete">
-  <button type="submit">Delete Attraction</button>
+  <button type="submit">Delete</button>
 </form>
 <br>
 <br>
