@@ -3,10 +3,10 @@
     <p>Seattle Attractions</p>
   </div>
   <div class="link">
-    <a href="/tag_form">Add Tag</a>
+    <a href="/tag_form">Add/Update Tag</a>
   </div>
   <div class="link">
-    <a href="/attraction_form">Add Attraction</a>
+    <a href="/attraction_form">Add/Update Attraction</a>
   </div>
 </div>
 
@@ -63,7 +63,7 @@
   <% if @attractions.any?() %>
     <% @attractions.each do |attraction| %>
     <li><a href="/attractions/<%= attraction.id() %>"><%= attraction.name() %></a></li>
-    <% end %>  
+    <% end %>
   <% else %>
     <p>There are no attractions yet!</p>
   <% end %>

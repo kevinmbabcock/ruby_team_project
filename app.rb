@@ -126,11 +126,11 @@ patch ('/search') do
     end
     @seasons_list.chop!.chop!
   end
-  if minimum && maximum
+  if minimum > 0.0 && maximum != 0.0
     @prices_list = "$" + minimum.to_s + " to $" + maximum.to_s
-  elsif minimum && !maximum
+  elsif minimum > 0.0 && maximum == 0.0
     @prices_list = "More than $" + minimum.to_s
-  elsif !minimum && maximum
+  elsif minimum == 0.0 && maximum > 0
     @prices_list = "Less than $" + maximum.to_s
   else
     @prices_list = ""
@@ -144,5 +144,6 @@ patch ('/search') do
   #     @attractions.push(attraction)
   #   end
   # end
+  binding.pry
   erb(:searching_results)
 end
