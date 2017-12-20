@@ -4,13 +4,13 @@
   <br>
   <h3>Attractions:</h3>
   <% if @attractions.any?() %>
-  <ul>
-    <% @attractions.each do |attraction| %>
-    <li><a href="/attractions/<%= attraction.id() %>"><%= attraction.name() %></a></li>
-    <% end %>
-  </ul>
+    <ul>
+      <% @attractions.each do |attraction| %>
+      <li><a href="/attractions/<%= attraction.id() %>"><%= attraction.name() %></a></li>
+      <% end %>
+    </ul>
   <% else %>
-  <p>There are no attractions maching this criteria! Try again!</p>
+    <p>There are no attractions matching this criteria! Try again!</p>
   <% end %>
 </div>
 <br>

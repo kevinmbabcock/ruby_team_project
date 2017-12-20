@@ -36,12 +36,12 @@
   <h3>List of Attractions:</h3>
   <br>
   <% if @attractions.any?() %>
-  <ul>
-    <% @attractions.each do |attraction| %>
-    <li><a href="/attractions/<%= attraction.id() %>"><%= attraction.name() %></a></li>
-    <% end %>
-  </ul>
+    <ul>
+      <% @attractions.each do |attraction| %>
+      <li><a href="/attractions/<%= attraction.id() %>"><%= attraction.name() %></a></li>
+      <% end %>
+    </ul>
   <% else %>
-  <p>There are no attractions yet!</p>
+    <p>There are no attractions yet!</p>
   <% end %>
 </div>

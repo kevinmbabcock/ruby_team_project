@@ -2,13 +2,13 @@
 <div class="list">
   <h3>Click to edit</h3>
   <% if @tags.any?() %>
-  <ul>
-    <% @tags.each do |tag| %>
-    <li><a href="/tags/<%= tag.id() %>/edit"><%= tag.name() %></a></li>
-    <% end %>
-  </ul>
+    <ul>
+      <% @tags.each do |tag| %>
+      <li><a href="/tags/<%= tag.id() %>/edit"><%= tag.name() %></a></li>
+      <% end %>
+    </ul>
   <% else %>
-  <p>There are no tags yet!</p>
+    <p>There are no tags yet!</p>
   <% end %>
   <br>
 </div>
