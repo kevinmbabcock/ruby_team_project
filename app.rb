@@ -117,6 +117,18 @@ patch ('/search') do
     @tags_list.concat(tag.name).concat(", ")
   end
   @tags_list.chop!.chop!
+  @seasons_list = ""
+  seasons.each do |season|
+    @seasons_list.concat(season + ", ")
+  end
+  @seasons_list.chop.chop
+  if minimum && maximum
+    @prices_list = "" + minimum + " to " + maximum
+  elsif minimum && !maximum
+    @prices_list = "More than " + minimum
+  elsif !minimum && maximum
+    @prices_list = "Less than " + maximum
+  end
 
   # @attractions = []
   # tag_ids.each do |id|
