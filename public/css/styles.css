@@ -50,7 +50,20 @@ img {
   background-color: lightgray;
   width: 210px;
   color: black;
+  font-size: 15px;
+  line-height: 1;
 }
+
+.sidebar h5 {
+  font-weight: bold;
+}
+
+.search {
+  border: none;
+  padding: 5px;
+  margin: 5px;
+}
+
 
 button {
   background-color: #008CBA;
@@ -105,10 +118,6 @@ em {
   padding: 15px;
  }
 
-.form-label {
-  font-size: 20px;
-  font-weight: bold;
-}
 
 .col-md-6 {
   width: 600px;
