@@ -72,7 +72,11 @@ class Attraction < ActiveRecord::Base
       all_attractions.each do |attraction|
         seasons.each do |each_season|
           if attraction.season.include?(each_season)
-            attractions.push(attraction)
+            if attractions.include?(attraction)
+              #do nothing
+            else
+              attractions.push(attraction)
+            end
           end
         end
       end
@@ -80,19 +84,31 @@ class Attraction < ActiveRecord::Base
     if minimum && maximum
       all_attractions.each do |attraction|
         if attraction.price > minimum && attraction.price < maximum
-          attractions.push(attraction)
+          if attractions.include?(attraction)
+            #do nothing
+          else
+            attractions.push(attraction)
+          end
         end
       end
     elsif minimum && !maximum
       all_attractions.each do |attraction|
         if attraction.price > minimum
-          attractions.push(attraction)
+          if attractions.include?(attraction)
+            #do nothing
+          else
+            attractions.push(attraction)
+          end
         end
       end
     elsif !minimum && maximum
       all_attractions.each do |attraction|
         if attraction.price < maximum
-          attractions.push(attraction)
+          if attractions.include?(attraction)
+            #do nothing
+          else
+            attractions.push(attraction)
+          end
         end
       end
     end
