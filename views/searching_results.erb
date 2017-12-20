@@ -1,5 +1,13 @@
 <div class="description">
-  <h4>Searching tags: <em> <%= @tags_list %></em></h4>
+  <% if @tags_list.any %>
+    <h4>Searching tags: <em> <%= @tags_list %></em></h4>
+  <% end %>
+  <% if @seasons_list.any %>
+   <h4>Searching seasons: <em> <%= @seasons_list %></em></h4>
+  <% end %>
+  <% if @prices_list.any %>
+   <h4>Searching price: <em> <%= @prices_list %></em></h4>
+  <% end %>
   <br>
   <br>
   <h3>Attractions:</h3>

@@ -79,6 +79,7 @@ button {
 .main {
   float: left;
   margin: 15px;
+  padding: 15px;
 }
 
 .description {
