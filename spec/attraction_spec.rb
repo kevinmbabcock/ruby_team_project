@@ -59,15 +59,14 @@ describe 'Attraction' do
       tag1 = Tag.create({:name => "tag1"})
       tag2 = Tag.create({:name => "tag2"})
       tag3 = Tag.create({:name => "tag3"})
-      binding.pry
       attraction1 = Attraction.create({:name => "waterfront", :description => "something", :season => ["Summer"], :price => 45, :tag_ids => [tag1.id]})
       attraction2 = Attraction.create({:name => "market", :description => "something else", :season => ["Spring"], :price => 5, :tag_ids => [tag2.id]})
-      expect(Attraction.search_results(nil, ["Summer"], nil, nil)).to(eq([attraction1]))
-      expect(Attraction.search_results(nil, nil, 0, nil)).to(eq([attraction1, attraction2]))
+      expect(Attraction.search_results(nil, ["Summer"], 0, 0)).to(eq([attraction1]))
+      expect(Attraction.search_results(nil, nil, 0, 50)).to(eq([attraction1, attraction2]))
       expect(Attraction.search_results(nil, nil, 4, 40)).to(eq([attraction2]))
       expect(Attraction.search_results(nil, nil, 4, 6)).to(eq([attraction2]))
       expect(Attraction.search_results(nil, ["Summer"], 0, 40)).to(eq([attraction1, attraction2]))
-      expect(Attraction.search_results([tag1.id], nil, nil, nil)).to(eq([attraction1]))
+      expect(Attraction.search_results([tag1.id], nil, 0, 0)).to(eq([attraction1]))
     end
   end
 
