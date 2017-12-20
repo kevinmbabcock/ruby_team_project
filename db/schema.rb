@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20171218174558) do
     t.string "name"
     t.string "description"
     t.string "season", default: [], array: true
-    t.money "price", scale: 2
+    t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

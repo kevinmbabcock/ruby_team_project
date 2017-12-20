@@ -10,7 +10,6 @@ class Attraction < ActiveRecord::Base
   has_many :tags, through: :attraction_tags
 
   def custom_update(name, description, seasons, price, tag_ids, remove_seasons, remove_tag_ids)
-binding.pry
     if name != ""
       new_name = name
     else
@@ -52,7 +51,6 @@ binding.pry
         remove_tag_ids.include?(id.to_s)
       end
     end
-binding.pry
     self.update({:name => new_name, :description => new_description, :season => new_seasons, :price => new_price, :tag_ids => new_tag_ids})
   end
 

@@ -43,9 +43,9 @@ describe 'Attraction' do
 
   describe '#custom_update' do
     it 'keeps all information before update and adds new info' do
-      attraction1 = Attraction.create({:name => "waterfront", :description => "none", :season => ["winter", "summer"], :price => 40, :tag_ids => nil})
-      attraction2 = Attraction.create({:name => "market", :description => "something", :season => ["winter", "summer", "spring"], :price => 50, :tag_ids => nil})
-      attraction1.custom_update("market", "something", ["spring"], 50, ["1"], nil, nil)
+      attraction1 = Attraction.create({:name => "waterfront", :description => "none", :season => ["winter", "summer"], :price => 40, :tag_ids => []})
+      attraction2 = Attraction.create({:name => "market", :description => "something", :season => ["summer", "spring"], :price => 50, :tag_ids => []})
+      attraction1.custom_update("market", "something", ["spring"], 50, nil, ["winter"], nil)
       expect(attraction1.name).to(eq(attraction2.name))
       expect(attraction1.description).to(eq(attraction2.description))
       expect(attraction1.season).to(eq(attraction2.season))
