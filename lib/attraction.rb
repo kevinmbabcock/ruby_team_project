@@ -56,6 +56,49 @@ class Attraction < ActiveRecord::Base
     self.update({:name => new_name, :description => new_description, :season => new_seasons, :price => new_price, :tag_ids => new_tag_ids})
   end
 
+  def self.search_results(tag_ids, seasons, minimum, maximum)
+    all_attractions = Attraction.all
+    attractions = []
+    if tag_ids
+      tag_ids.each do |id|
+        tag = Tag.find(id)
+        new_attractions = tag.attractions
+        new_attractions.each do |attraction|
+          attractions.push(attraction)
+        end
+      end
+    end
+    if seasons
+      all_attractions.each do |attraction|
+        seasons.each do |each_season|
+          if attraction.season.include?(each_season)
+            attractions.push(attraction)
+          end
+        end
+      end
+    end
+    if minimum && maximum
+      all_attractions.each do |attraction|
+        if attraction.price > minimum && attraction.price < maximum
+          attractions.push(attraction)
+        end
+      end
+    elsif minimum && !maximum
+      all_attractions.each do |attraction|
+        if attraction.price > minimum
+          attractions.push(attraction)
+        end
+      end
+    elsif !minimum && maximum
+      all_attractions.each do |attraction|
+        if attraction.price < maximum
+          attractions.push(attraction)
+        end
+      end
+    end
+    attractions
+  end
+
   private
 
   def capitalize_name
