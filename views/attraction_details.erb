@@ -7,10 +7,10 @@
     </div>
     <div class="col-md-6">
       <h2>Price: </h2>
-      <% if @attraction.price = "" %>
-        <p>Free</p>
+      <% if @attraction.price %>
+        <p>$<%= @attraction.price %></p>
       <% else %>
-        <p>$<%= @attraction.price.round(2) %></p>
+        <p>No price listed</p>
       <% end %>
     </div>
   </div>
@@ -20,8 +20,10 @@
     <div class="col-md-6">
       <h2>Seasons: </h2>
       <ul>
-        <% @attraction.season.each do |each_season| %>
-          <li><%= each_season %> </li>
+        <% if @attraction.season %>
+          <% @attraction.season.each do |each_season| %>
+            <li><%= each_season %> </li>
+          <% end %>
         <% end %>
       </ul>
     </div>

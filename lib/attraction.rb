@@ -70,8 +70,43 @@ class Attraction < ActiveRecord::Base
     end
     if seasons
       all_attractions.each do |attraction|
-        seasons.each do |each_season|
-          if attraction.season.include?(each_season)
+        if attraction.season
+          seasons.each do |each_season|
+            if attraction.season.include?(each_season)
+              if attractions.include?(attraction)
+                #do nothing
+              else
+                attractions.push(attraction)
+              end
+            end
+          end
+        end
+      end
+    end
+    if maximum == 0.0 && minimum == 0.0
+      #do nothing
+    elsif minimum > 0.0 && maximum != 0.0
+      all_attractions.each do |attraction|
+        if attraction.price
+          if attraction.price > minimum && attraction.price < maximum
+            if attractions.include?(attraction)
+              #do nothing
+            else
+              attractions.push(attraction)
+            end
+          end
+        else
+          if attractions.include?(attraction)
+            #do nothing
+          else
+            attractions.push(attraction)
+          end
+        end
+      end
+    elsif minimum > 0.0 && maximum == 0.0
+      all_attractions.each do |attraction|
+        if attraction.price
+          if attraction.price > minimum
             if attractions.include?(attraction)
               #do nothing
             else
@@ -80,34 +115,15 @@ class Attraction < ActiveRecord::Base
           end
         end
       end
-    end
-    if minimum && maximum
+    elsif minimum == 0.0 && maximum > 0.0
       all_attractions.each do |attraction|
-        if attraction.price > minimum && attraction.price < maximum
-          if attractions.include?(attraction)
-            #do nothing
-          else
-            attractions.push(attraction)
-          end
-        end
-      end
-    elsif minimum && !maximum
-      all_attractions.each do |attraction|
-        if attraction.price > minimum
-          if attractions.include?(attraction)
-            #do nothing
-          else
-            attractions.push(attraction)
-          end
-        end
-      end
-    elsif !minimum && maximum
-      all_attractions.each do |attraction|
-        if attraction.price < maximum
-          if attractions.include?(attraction)
-            #do nothing
-          else
-            attractions.push(attraction)
+        if attraction.price
+          if attraction.price < maximum
+            if attractions.include?(attraction)
+              #do nothing
+            else
+              attractions.push(attraction)
+            end
           end
         end
       end
