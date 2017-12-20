@@ -10,7 +10,7 @@
     <label class="form-label" for='price'>Price:</label>
     <input class="form-control" id='price' name='price' type="text">
     <br>
-    <h5>Season:</h5>
+    <h5>Add Season:</h5>
     <div class="checkbox">
       <label><input type="checkbox" name="seasons[]" value="winter">  Winter</label>
     </div>
@@ -33,6 +33,45 @@
           <input type="checkbox" name="tag_ids[]" value="<%= tag.id %>"> <%= tag.name %><br>
         </label>
       </div>
+    <% end %>
+    <h5>Remove Season:</h5>
+    <% if @attraction.season %>
+      <% @attraction.season.each do |season| %>
+        <div class="checkbox">
+          <label for="remove_season">
+            <input type="checkbox" name="remove_seasons[]" value = "<%= season %>"><%= season %>
+          </label>
+        </div>
+        <input type="hidden" name="_method" value="patch">
+      <% end %>
+    <% else %>
+      <p>There are no seasons added yet</p>
+    <% end %>
+    <!-- <div class="checkbox">
+      <label><input type="checkbox" name="remove_seasons[]" value="winter">  Winter</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="remove_seasons[]" value="spring">  Spring</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="remove_seasons[]" value="summer">  Summer</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="remove_seasons[]" value="fall">  Fall</label>
+    </div>
+    <input type="hidden" name="_method" value="patch"> -->
+    <br>
+    <h5>Remove Tags:</h5>
+    <% if @attraction.tags.any? %>
+      <% @attraction.tags.each do |tag| %>
+        <div class="checkbox">
+          <label for="remove_tags">
+            <input type="checkbox" name="remove_tag_ids[]" value="<%= tag.id %>"> <%= tag.name %><br>
+          </label>
+        </div>
+      <% end %>
+    <% else %>
+      <p>There are no tags assigned to this activity</p>
     <% end %>
     <button type="submit">Update Attraction!</button>
   </div>

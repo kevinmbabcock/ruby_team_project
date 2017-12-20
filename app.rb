@@ -89,9 +89,10 @@ patch('/attractions/:id/edit') do
   season = params[:seasons]
   price = params[:price]
   tag_ids = params[:tag_ids]
-
+  remove_seasons = params[:remove_seasons]
+  remove_tags = params[:remove_tag_ids]
   @attraction = Attraction.find(params[:id].to_i)
-  @attraction.custom_update(name, description, season, price, tag_ids)
+  @attraction.custom_update(name, description, season, price, tag_ids, remove_seasons, remove_tags)
 
   @attractions = Attraction.all()
   @tags = Tag.all()
