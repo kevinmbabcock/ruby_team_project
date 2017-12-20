@@ -135,7 +135,7 @@ patch ('/search') do
   else
     @prices_list = ""
   end
-# binding.pry
+
   # @attractions = []
   # tag_ids.each do |id|
   #   tag = Tag.find(id)
@@ -144,6 +144,6 @@ patch ('/search') do
   #     @attractions.push(attraction)
   #   end
   # end
-  binding.pry
+
   erb(:searching_results)
 end

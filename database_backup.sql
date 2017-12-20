@@ -259,6 +259,42 @@ COPY attraction_tags (id, attraction_id, tag_id, created_at, updated_at) FROM st
 54	11	6	2017-12-20 19:31:26.180075	2017-12-20 19:31:26.180075
 55	11	15	2017-12-20 19:31:26.18073	2017-12-20 19:31:26.18073
 56	11	8	2017-12-20 19:31:26.181329	2017-12-20 19:31:26.181329
+57	12	1	2017-12-20 21:55:01.451701	2017-12-20 21:55:01.451701
+58	12	16	2017-12-20 21:55:01.452516	2017-12-20 21:55:01.452516
+59	13	1	2017-12-20 21:57:40.07432	2017-12-20 21:57:40.07432
+60	13	16	2017-12-20 21:57:40.075326	2017-12-20 21:57:40.075326
+61	14	9	2017-12-20 23:33:27.722936	2017-12-20 23:33:27.722936
+62	14	10	2017-12-20 23:33:27.72376	2017-12-20 23:33:27.72376
+63	16	1	2017-12-20 23:40:32.433093	2017-12-20 23:40:32.433093
+64	1	21	2017-12-20 23:44:09.777552	2017-12-20 23:44:09.777552
+65	17	1	2017-12-20 23:45:30.688689	2017-12-20 23:45:30.688689
+66	17	16	2017-12-20 23:45:30.689674	2017-12-20 23:45:30.689674
+67	17	20	2017-12-20 23:45:30.690551	2017-12-20 23:45:30.690551
+68	17	21	2017-12-20 23:45:30.691394	2017-12-20 23:45:30.691394
+69	17	22	2017-12-20 23:45:30.692319	2017-12-20 23:45:30.692319
+70	16	17	2017-12-20 23:46:00.49577	2017-12-20 23:46:00.49577
+71	16	18	2017-12-20 23:46:00.497187	2017-12-20 23:46:00.497187
+72	16	21	2017-12-20 23:46:00.498497	2017-12-20 23:46:00.498497
+73	18	1	2017-12-20 23:47:01.259901	2017-12-20 23:47:01.259901
+74	18	5	2017-12-20 23:47:01.260935	2017-12-20 23:47:01.260935
+75	18	17	2017-12-20 23:47:01.261748	2017-12-20 23:47:01.261748
+76	19	1	2017-12-20 23:48:16.620709	2017-12-20 23:48:16.620709
+77	19	5	2017-12-20 23:48:16.62138	2017-12-20 23:48:16.62138
+78	19	15	2017-12-20 23:48:16.622007	2017-12-20 23:48:16.622007
+79	19	17	2017-12-20 23:48:16.622605	2017-12-20 23:48:16.622605
+80	19	18	2017-12-20 23:48:16.623192	2017-12-20 23:48:16.623192
+81	20	1	2017-12-20 23:49:34.526812	2017-12-20 23:49:34.526812
+82	20	3	2017-12-20 23:49:34.527454	2017-12-20 23:49:34.527454
+83	20	4	2017-12-20 23:49:34.528035	2017-12-20 23:49:34.528035
+84	20	6	2017-12-20 23:49:34.528628	2017-12-20 23:49:34.528628
+85	20	15	2017-12-20 23:49:34.529205	2017-12-20 23:49:34.529205
+86	20	21	2017-12-20 23:49:34.529787	2017-12-20 23:49:34.529787
+87	10	22	2017-12-20 23:51:12.189493	2017-12-20 23:51:12.189493
+88	2	19	2017-12-20 23:51:36.757193	2017-12-20 23:51:36.757193
+89	21	1	2017-12-20 23:53:00.945233	2017-12-20 23:53:00.945233
+90	21	17	2017-12-20 23:53:00.945934	2017-12-20 23:53:00.945934
+91	21	21	2017-12-20 23:53:00.946569	2017-12-20 23:53:00.946569
+92	21	22	2017-12-20 23:53:00.94753	2017-12-20 23:53:00.94753
 \.
 
 
@@ -266,7 +302,7 @@ COPY attraction_tags (id, attraction_id, tag_id, created_at, updated_at) FROM st
 -- Name: attraction_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('attraction_tags_id_seq', 56, true);
+SELECT pg_catalog.setval('attraction_tags_id_seq', 92, true);
 
 
 --
@@ -274,9 +310,7 @@ SELECT pg_catalog.setval('attraction_tags_id_seq', 56, true);
 --
 
 COPY attractions (id, name, description, season, price, created_at, updated_at) FROM stdin;
-1	Space Needle	platform to watch amazing city panorama	{winter,spring,summer,fall}	35.0	2017-12-20 18:29:21.81227	2017-12-20 18:29:21.81227
 2	Pike Place Market	town market in downtown	{winter,spring,summer,fall}	0.0	2017-12-20 18:30:10.740499	2017-12-20 18:30:10.740499
-3	Marijuana Festival	weed fest	{fall}	25.0	2017-12-20 19:18:57.943735	2017-12-20 19:18:57.943735
 4	Kerry Park	park with scenic view	{winter,spring,summer,fall}	0.0	2017-12-20 19:22:35.45438	2017-12-20 19:22:35.45438
 5	Ballard Locks	locks with salmon ladder	{winter,spring,summer,fall}	0.0	2017-12-20 19:23:49.058904	2017-12-20 19:23:49.058904
 6	Fremont Troll	troll statue under the I-5 bridge	{winter,spring,summer,fall}	0.0	2017-12-20 19:24:48.967327	2017-12-20 19:24:48.967327
@@ -285,6 +319,15 @@ COPY attractions (id, name, description, season, price, created_at, updated_at) 
 9	Seattle Aquarium	aquarium with pacific north west environment 	{winter,spring,summer,fall}	25.0	2017-12-20 19:29:15.371366	2017-12-20 19:29:15.371366
 10	Whale Watching	trip to San Juan island to watch whales	{spring,summer,fall}	100.0	2017-12-20 19:30:15.844361	2017-12-20 19:30:15.844361
 11	Ballard Sunday Market	street market with local products	{winter,spring,summer,fall}	0.0	2017-12-20 19:31:26.177293	2017-12-20 19:31:42.028575
+3	Hemp Fest	weed fest	{fall}	25.0	2017-12-20 19:18:57.943735	2017-12-20 21:53:40.635179
+12	Great Wheel	moving platform to watch city panorama	{Winter,Spring,Summer,Fall}	28.0	2017-12-20 21:55:01.450302	2017-12-20 21:55:01.450302
+16	Museum Of Pop Culture	colorful exhibits cover everything from the history of indie video games and horror films to Nirvana, the Seahawks, and more	{Winter,Spring,Fall}	30.0	2017-12-20 23:40:32.431529	2017-12-20 23:40:32.431529
+1	Space Needle	Views from the top feature Elliott Bay, the Cascade Mountains, and even Mount Rainier.	{winter,spring,summer,fall}	35.0	2017-12-20 18:29:21.81227	2017-12-20 23:44:09.779346
+17	Seattle Center Monorail	The designated historic landmark can reach a top speed of 45 miles per hour and weaves between skyscrapers above the city streets.	{Winter,Spring,Summer,Fall}	15.0	2017-12-20 23:45:30.687419	2017-12-20 23:45:30.687419
+18	Pacific Science Center	This family-friendly museum is where science lessons come to life	{Winter,Spring,Summer,Fall}	20.0	2017-12-20 23:47:01.258521	2017-12-20 23:47:01.258521
+19	Chihuly Garden And Glass	The  museum is dedicated to the work and career of locally born, world-renowned glassblower Dale Chihuly.	{Winter,Spring,Summer,Fall}	25.0	2017-12-20 23:48:16.619827	2017-12-20 23:48:16.619827
+20	Chinatown-international District	The ornate Chinatown Gate welcomes you to this diverse neighborhood, where the food scene is incredible	{Winter,Spring,Summer,Fall}	0.0	2017-12-20 23:49:34.525847	2017-12-20 23:49:34.525847
+21	Museum Of Flight	The Museum of Flight is one of the largest air and space collections in the country, with an overwhelming number of things to see.	{Winter,Spring,Summer,Fall}	23.0	2017-12-20 23:53:00.944187	2017-12-20 23:53:00.944187
 \.
 
 
@@ -292,7 +335,7 @@ COPY attractions (id, name, description, season, price, created_at, updated_at) 
 -- Name: attractions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('attractions_id_seq', 11, true);
+SELECT pg_catalog.setval('attractions_id_seq', 21, true);
 
 
 --
@@ -327,6 +370,12 @@ COPY tags (id, name, created_at, updated_at) FROM stdin;
 16	scenic view	2017-12-20 18:28:01.043117	2017-12-20 18:28:01.043117
 15	shopping	2017-12-20 18:27:47.442279	2017-12-20 18:30:25.010503
 8	pets welcome	2017-12-20 18:26:50.532255	2017-12-20 19:25:06.259711
+17	exhibition	2017-12-20 23:40:47.645804	2017-12-20 23:41:07.238008
+18	art	2017-12-20 23:41:19.525342	2017-12-20 23:41:19.525342
+19	life music	2017-12-20 23:41:52.053935	2017-12-20 23:41:52.053935
+20	downtown	2017-12-20 23:42:02.134831	2017-12-20 23:42:02.134831
+21	history	2017-12-20 23:42:17.806942	2017-12-20 23:42:17.806942
+22	trip	2017-12-20 23:42:52.35671	2017-12-20 23:42:52.35671
 \.
 
 
@@ -334,7 +383,7 @@ COPY tags (id, name, created_at, updated_at) FROM stdin;
 -- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('tags_id_seq', 16, true);
+SELECT pg_catalog.setval('tags_id_seq', 22, true);
 
 
 --
