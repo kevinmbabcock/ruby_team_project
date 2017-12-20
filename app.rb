@@ -89,7 +89,6 @@ patch('/attractions/:id/edit') do
   season = params[:seasons]
   price = params[:price]
   tag_ids = params[:tag_ids]
-  binding.pry
   @attraction = Attraction.find(params[:id].to_i)
   @attraction.custom_update(name, description, season, price, tag_ids)
 
