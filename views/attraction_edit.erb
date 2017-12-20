@@ -34,8 +34,9 @@
         </label>
       </div>
     <% end %>
+
     <h5>Remove Season:</h5>
-    <% if @attraction.season %>
+    <% if @attraction.season.any? %>
       <% @attraction.season.each do |season| %>
         <div class="checkbox">
           <label for="remove_season">
