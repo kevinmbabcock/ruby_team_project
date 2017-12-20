@@ -1,73 +1,85 @@
 <h1 class="title">Update:  <%= @attraction.name%> </h1>
-<form action="/attractions/<%= @attraction.id() %>/edit" method="post">
-  <div class="form-group">
-    <label class="form-label" for='name'>Update Name:</label>
-    <input class="form-control" id='name' name='name' type="text">
+<div class="forms-to-update">
+  <form action="/attractions/<%= @attraction.id() %>/edit" method="post">
+    <div class="form-group">
+      <label class="form-label" for='name'>Update Name:</label>
+      <input class="form-control" id='name' name='name' type="text">
 
-    <label class="form-label" for='description'>Update Description:</label>
-    <input class="form-control" id='description' name='description' type="text">
+      <label class="form-label" for='description'>Update Description:</label>
+      <input class="form-control" id='description' name='description' type="text">
 
-    <label class="form-label" for='price'>Update Price:</label>
-    <input class="form-control" id='price' name='price' type="text">
-    <br>
-    <h5>Add Season:</h5>
-    <div class="checkbox">
-      <label><input type="checkbox" name="seasons[]" value="winter">  Winter</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" name="seasons[]" value="spring">  Spring</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" name="seasons[]" value="summer">  Summer</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" name="seasons[]" value="fall">  Fall</label>
-    </div>
-
-    <input type="hidden" name="_method" value="patch">
-    <br>
-    <h5>Add Tags to it:</h5>
-    <% @tags.each do |tag| %>
-      <div class="checkbox">
-        <label for="add_tags">
-          <input type="checkbox" name="tag_ids[]" value="<%= tag.id %>"> <%= tag.name %><br>
-        </label>
+      <label class="form-label" for='price'>Update Price:</label>
+      <input class="form-control" id='price' name='price' type="text">
+      <br>
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Add Season:</h5>
+          <div class="checkbox">
+            <label><input type="checkbox" name="seasons[]" value="winter">  Winter</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="seasons[]" value="spring">  Spring</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="seasons[]" value="summer">  Summer</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="seasons[]" value="fall">  Fall</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h5>Remove Seasons:</h5>
+          <% if @attraction.season.any? %>
+            <% @attraction.season.each do |season| %>
+              <div class="checkbox">
+                <label for="remove_season">
+                  <input type="checkbox" name="remove_seasons[]" value = "<%= season %>"> <%= season %>
+                </label>
+              </div>
+              <input type="hidden" name="_method" value="patch">
+            <% end %>
+          <% else %>
+            <p>There are no seasons added yet!</p>
+          <% end %>
+        </div>
       </div>
-    <% end %>
-
-    <h5>Remove Seasons:</h5>
-    <% if @attraction.season.any? %>
-      <% @attraction.season.each do |season| %>
-        <div class="checkbox">
-          <label for="remove_season">
-            <input type="checkbox" name="remove_seasons[]" value = "<%= season %>"><%= season %>
-          </label>
+      <br>
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Add Tags to it:</h5>
+          <% @tags.each do |tag| %>
+            <input type="hidden" name="_method" value="patch">
+            <div class="checkbox">
+              <label for="add_tags">
+                <input type="checkbox" name="tag_ids[]" value="<%= tag.id %>"> <%= tag.name %><br>
+              </label>
+            </div>
+          <% end %>
         </div>
-        <input type="hidden" name="_method" value="patch">
-      <% end %>
-    <% else %>
-      <p>There are no seasons added yet</p>
-    <% end %>
-    <br>
-    <h5>Remove Tags:</h5>
-    <% if @attraction.tags.any? %>
-      <% @attraction.tags.each do |tag| %>
-        <div class="checkbox">
-          <label for="remove_tags">
-            <input type="checkbox" name="remove_tag_ids[]" value="<%= tag.id %>"> <%= tag.name %><br>
-          </label>
+        <div class="col-md-6">
+          <h5>Remove Tags:</h5>
+          <% if @attraction.tags.any? %>
+            <% @attraction.tags.each do |tag| %>
+              <div class="checkbox">
+                <label for="remove_tags">
+                  <input type="checkbox" name="remove_tag_ids[]" value="<%= tag.id %>"> <%=  tag.name %><br>
+                </label>
+              </div>
+            <% end %>
+          <% else %>
+            <p>There are no tags assigned to this activity!</p>
+          <% end %>
         </div>
-      <% end %>
-    <% else %>
-      <p>There are no tags assigned to this activity</p>
-    <% end %>
-    <button type="submit">Update Attraction!</button>
-  </div>
-</form>
-<form action="/attractions/<%= @attraction.id() %>/edit" method="post">
-  <input name="_method" type="hidden" value="delete">
-  <button type="submit">Delete Attraction</button>
-</form>
+      </div>
+    </div>
+    <button type="submit">Update</button>
+  </form>
+  <br>
+  <form action="/attractions/<%= @attraction.id() %>/edit" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <button type="submit">Delete</button>
+  </form>
+</div>
 <br>
 <br>
 <a href="/">Home page</a>
