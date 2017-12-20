@@ -47,19 +47,6 @@
     <% else %>
       <p>There are no seasons added yet</p>
     <% end %>
-    <!-- <div class="checkbox">
-      <label><input type="checkbox" name="remove_seasons[]" value="winter">  Winter</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" name="remove_seasons[]" value="spring">  Spring</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" name="remove_seasons[]" value="summer">  Summer</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" name="remove_seasons[]" value="fall">  Fall</label>
-    </div>
-    <input type="hidden" name="_method" value="patch"> -->
     <br>
     <h5>Remove Tags:</h5>
     <% if @attraction.tags.any? %>
@@ -78,7 +65,7 @@
 </form>
 <form action="/attractions/<%= @attraction.id() %>/edit" method="post">
   <input name="_method" type="hidden" value="delete">
-  <button type="submit">Delete Attraction</button>
+  <button type="submit">Delete</button>
 </form>
 <br>
 <br>

@@ -1,6 +1,6 @@
 <h1 class="title">Attractions</h1>
 
-<h3>Click to edit:</h3>
+<h3>Click to edit</h3>
 <% if @attractions.any?() %>
 <ul>
   <% @attractions.each do |attraction| %>
@@ -14,7 +14,7 @@
 
 
 
-<h3>Add New Attraction to a list:</h3>
+<h3>Add New Attraction</h3>
 <form action="/attraction_form" method="post">
   <div class="form-group">
     <label class="form-label" for='name'>Name:</label>
@@ -50,7 +50,7 @@
         </label>
       </div>
     <% end %>
-    <button type="submit">Add Attraction!</button>
+    <button type="submit">Add</button>
   </div>
 </form>
 <br>

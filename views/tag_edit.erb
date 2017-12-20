@@ -1,15 +1,16 @@
-<h1>Update: <span class="title"> <%= @tag.name%> </span></h1>
+<h1 class="title">Update: <%= @tag.name%> </h1>
 <form action="/tags/<%= @tag.id() %>/edit" method="post">
   <div class="form-group">
     <label class="form-label" for='name'>Change tag:</label>
     <input class="form-control" id='name' name='name' type="text">
     <input type="hidden" name="_method" value="patch">
-    <button type="submit">Update Tag!</button>
+    <br>
+    <button type="submit">Update</button>
   </div>
 </form>
 <form action="/tags/<%= @tag.id() %>/edit" method="post">
   <input name="_method" type="hidden" value="delete">
-  <button type="submit">Delete Tag</button>
+  <button type="submit">Delete</button>
 </form>
 <br>
 <br>
