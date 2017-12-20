@@ -80,6 +80,8 @@ button {
   float: left;
   margin: 15px;
   padding: 15px;
+  width: 840px;
+  text-align: center;
 }
 
 .description {
