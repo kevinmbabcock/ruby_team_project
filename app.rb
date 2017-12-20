@@ -104,8 +104,12 @@ get ('/attractions/:id') do
   erb(:attraction_details)
 end
 
-patch ('/tags-search') do
+patch ('/search') do
   tag_ids = params[:tag_ids]
+  seasons = params[:seasons]
+  minimum = params[:minumum].to_f
+  maximum = params[:maximum].to_f
+  @attractions = Attraction.search_results(tag_ids, seasons, minimum, maximum)
   @tags_list = ""
   tag_ids.each do |tag_id|
     tag_id.to_i
@@ -114,17 +118,13 @@ patch ('/tags-search') do
   end
   @tags_list.chop!.chop!
 
-  @attractions = []
-  tag_ids.each do |id|
-    tag = Tag.find(id)
-    attractions = tag.attractions
-    attractions.each do |attraction|
-      @attractions.push(attraction)
-    end
-  end
-
-
-
-
+  # @attractions = []
+  # tag_ids.each do |id|
+  #   tag = Tag.find(id)
+  #   attractions = tag.attractions
+  #   attractions.each do |attraction|
+  #     @attractions.push(attraction)
+  #   end
+  # end
   erb(:searching_results)
 end
