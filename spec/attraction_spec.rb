@@ -54,8 +54,8 @@ describe 'Attraction' do
     end
   end
 
-  describe '#search_results' do
-    it 'returns all attractions matching the search criteria' do
+  describe '.search_results' do
+    it 'returns all attractions matching one of the search criteria' do
       tag1 = Tag.create({:name => "tag1"})
       tag2 = Tag.create({:name => "tag2"})
       tag3 = Tag.create({:name => "tag3"})
@@ -67,6 +67,20 @@ describe 'Attraction' do
       expect(Attraction.search_results(nil, nil, 4, 6)).to(eq([attraction2]))
       expect(Attraction.search_results(nil, ["Summer"], 0, 40)).to(eq([attraction1, attraction2]))
       expect(Attraction.search_results([tag1.id], nil, 0, 0)).to(eq([attraction1]))
+    end
+  end
+
+  describe '.search_inclusive' do
+    it 'returns all attractions matching all of the search criteria' do
+      tag1 = Tag.create({:name => "tag1"})
+      tag2 = Tag.create({:name => "tag2"})
+      attraction1 = Attraction.create({:name => "waterfront", :description => "something", :season => ["Summer", "Winter"], :price => 10, :tag_ids => [tag1.id]})
+      attraction2 = Attraction.create({:name => "market", :description => "something else", :season => ["Summer", "Fall", "Spring"], :price => 20, :tag_ids => [tag2.id]})
+      attraction3 = Attraction.create({:name => "space needle", :description => "tall tower", :season => ["Summer", "Spring", "Fall"], :price => 15, :tag_ids => [tag1.id, tag2.id]})
+      expect(Attraction.search_inclusive([tag1.id], ["Summer"], 5, 20)).to(eq([attraction1, attraction3]))
+      expect(Attraction.search_inclusive([tag1.id], ["Summer"], 5, 15)).to(eq([attraction1]))
+      expect(Attraction.search_inclusive(nil, ["Summer", "Spring"], 0.0, 0.0)).to(eq([attraction2, attraction3]))
+      expect(Attraction.search_inclusive([tag1.id], ["Summer", "Spring"], 0.0, 0.0)).to(eq([attraction3]))
     end
   end
 
