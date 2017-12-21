@@ -108,7 +108,7 @@ patch ('/search') do
   minimum = params[:minimum].to_f
   maximum = params[:maximum].to_f
   inclusive = params[:inclusive]
-  if inclusive = "inclusive"
+  if inclusive == "inclusive"
     attractions = Attraction.search_inclusive(tag_ids, seasons, minimum, maximum)
   else
     attractions = Attraction.search_results(tag_ids, seasons, minimum, maximum)

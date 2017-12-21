@@ -178,14 +178,26 @@ class Attraction < ActiveRecord::Base
       end
     end
 
-    if maximum == 0.0 && minimum == 0.0
+    if minimum == 0.0 && maximum == 0.0
       #do nothing
     elsif minimum > 0.0 && maximum != 0.0 #if user fills in both maximum and minimum values
-
+      matching_attractions.keep_if do |attraction|
+        if attraction.price
+          attraction.price > minimum && attraction.price < maximum
+        end
+      end
     elsif minimum > 0.0 && maximum == 0.0 #if user only fills in minimum value
-
+      matching_attractions.keep_if do |attraction|
+        if attraction.price
+          attraction.price > minimum
+        end
+      end
     elsif minimum == 0.0 && maximum > 0.0 #if user only fills in maximum value
-
+      matching_attractions.keep_if do |attraction|
+        if attraction.price
+          attraction.price < maximum
+        end
+      end
     end
     matching_attractions
   end
