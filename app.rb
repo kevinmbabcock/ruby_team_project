@@ -4,19 +4,24 @@ Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 get ("/") do
-  @attractions = Attraction.all()
-  @tags = Tag.all()
+  attractions = Attraction.all()
+  @attractions = attractions.sort { |a,b| a.name <=> b.name}
+  tags = Tag.all()
+  @tags = tags.sort { |a,b| a.name <=> b.name}
   erb(:index)
 end
 
 get ("/tag_form") do
-  @tags = Tag.all()
+  tags = Tag.all()
+  @tags = tags.sort { |a,b| a.name <=> b.name }
   erb(:tag_form)
 end
 
 get ("/attraction_form") do
-  @attractions = Attraction.all()
-  @tags = Tag.all()
+  attractions = Attraction.all()
+  @attractions = attractions.sort { |a,b| a.name <=> b.name}
+  tags = Tag.all()
+  @tags = tags.sort { |a,b| a.name <=> b.name}
   erb(:attraction_form)
 end
 
@@ -39,8 +44,10 @@ patch ('/attraction_form') do
   tag_ids = params[:tag_ids]
   @attraction = Attraction.create({:name => name, :description => description, :price => price, :season => season, :tag_ids => tag_ids, :id => nil})
   if @attraction.save()
-    @attractions = Attraction.all()
-    @tags = Tag.all()
+    attractions = Attraction.all()
+    @attractions = attractions.sort { |a,b| a.name <=> b.name}
+    tags = Tag.all()
+    @tags = tags.sort { |a,b| a.name <=> b.name}
     erb(:attraction_form)
   else
     erb(:error)
@@ -55,7 +62,8 @@ end
 delete('/tags/:id/edit') do
   @tag = Tag.find(params[:id].to_i)
   @tag.delete()
-  @tags = Tag.all()
+  tags = Tag.all()
+  @tags = tags.sort { |a,b| a.name <=> b.name}
   erb(:tag_form)
 end
 
@@ -63,21 +71,25 @@ patch('/tags/:id/edit') do
   name = params[:name]
   @tag = Tag.find(params[:id].to_i)
   @tag.update({:name => name})
-  @tags = Tag.all()
+  tags = Tag.all()
+  @tags = tags.sort { |a,b| a.name <=> b.name}
   erb(:tag_form)
 end
 
 get ('/attractions/:id/edit') do
   @attraction = Attraction.find(params[:id].to_i)
-  @tags = Tag.all()
+  tags = Tag.all()
+  @tags = tags.sort { |a,b| a.name <=> b.name}
   erb(:attraction_edit)
 end
 
 delete('/attractions/:id/edit') do
   @attraction = Attraction.find(params[:id].to_i)
   @attraction.delete()
-  @attractions = Attraction.all()
-  @tags = Tag.all()
+  attractions = Attraction.all()
+  @attractions = attractions.sort { |a,b| a.name <=> b.name}
+  tags = Tag.all()
+  @tags = tags.sort { |a,b| a.name <=> b.name}
   erb(:attraction_form)
 end
 
@@ -91,8 +103,10 @@ patch('/attractions/:id/edit') do
   remove_tags = params[:remove_tag_ids]
   @attraction = Attraction.find(params[:id].to_i)
   @attraction.custom_update(name, description, season, price, tag_ids, remove_seasons, remove_tags)
-  @attractions = Attraction.all()
-  @tags = Tag.all()
+  attractions = Attraction.all()
+  @attractions = attractions.sort { |a,b| a.name <=> b.name}
+  tags = Tag.all()
+  @tags = tags.sort { |a,b| a.name <=> b.name}
   erb(:attraction_form)
 end
 
@@ -106,7 +120,8 @@ patch ('/search') do
   seasons = params[:seasons]
   minimum = params[:minimum].to_f
   maximum = params[:maximum].to_f
-  @attractions = Attraction.search_results(tag_ids, seasons, minimum, maximum)
+  attractions = Attraction.search_results(tag_ids, seasons, minimum, maximum)
+  @attractions = attractions.sort { |a,b| a.name <=> b.name}
   @tags_list = ""
   if tag_ids
     tag_ids.each do |tag_id|
