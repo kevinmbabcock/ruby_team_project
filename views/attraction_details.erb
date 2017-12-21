@@ -30,7 +30,8 @@
     <div class="col-md-6">
       <h2>Tags: </h2>
       <ul>
-        <% @attraction.tags.each do |tag| %>
+        <% tags = @attraction.tags.sort { |a,b| a.name <=> b.name} %>
+        <% tags.each do |tag| %>
           <li><%= tag["name"] %> </li>
         <% end %>
       </ul>
