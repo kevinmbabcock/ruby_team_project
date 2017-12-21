@@ -32,6 +32,8 @@ patch ("/tag_form") do
     @tags = Tag.all()
     erb(:tag_form)
   else
+    @error_message1 = "No more than 25 characters"
+    @error_message2 = "No blank input"
     erb(:error)
   end
 end
@@ -50,6 +52,8 @@ patch ('/attraction_form') do
     @tags = tags.sort { |a,b| a.name <=> b.name}
     erb(:attraction_form)
   else
+    @error_message1 = "No more than 50 characters for name and 200 characters for description"
+    @error_message2 = "No blank inputs"
     erb(:error)
   end
 end
