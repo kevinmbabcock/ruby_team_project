@@ -9,7 +9,7 @@ a {
   font-size: 20px;
 }
 
-img {
+.layout img {
   height: 400px;
 }
 
@@ -103,12 +103,16 @@ button {
   border: none;
   padding: 15px;
   margin: 15px;
+  float: left;
+  width: 450px
 }
 
 .form {
   border: none;
   padding: 15px;
   margin: 15px;
+  float: left;
+  width: 1100px;
 }
 
 em {
@@ -141,4 +145,16 @@ h5 {
 
 hr {
   border-top: 1px solid #b3b3b3;
+}
+
+.image img {
+  float: left;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  width: 600px;
+}
+
+.home-page {
+  float: left;
+  width: 1100px;
 }
