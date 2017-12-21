@@ -70,7 +70,11 @@ class Attraction < ActiveRecord::Base
         tag = Tag.find(id)
         new_attractions = tag.attractions
         new_attractions.each do |attraction|
-          attractions.push(attraction)
+          if attractions.include?(attraction)
+            #do nothing
+          else
+            attractions.push(attraction)
+          end
         end
       end
     end
