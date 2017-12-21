@@ -8,7 +8,7 @@
     <div class="col-md-6">
       <h2>Price: </h2>
       <% if @attraction.price %>
-        <p>$<%= @attraction.price %></p>
+        <p>$<%= sprintf('%.2f', @attraction.price) %></p>
       <% else %>
         <p>No price listed</p>
       <% end %>
