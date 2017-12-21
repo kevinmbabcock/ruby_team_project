@@ -156,6 +156,9 @@ class Attraction < ActiveRecord::Base
           attraction.tags.include?(tag)
         end
       end
+      if matching_attractions == []
+        return matching_attractions
+      end
     end
     if seasons
       if matching_attractions.any?
@@ -202,6 +205,9 @@ class Attraction < ActiveRecord::Base
             end
           end
         end
+      end
+      if matching_attractions == []
+        return matching_attractions
       end
     end
     if matching_attractions.any?
