@@ -37,7 +37,6 @@ patch ('/attraction_form') do
   price = params[:price]
   season = params[:seasons]
   tag_ids = params[:tag_ids]
-
   @attraction = Attraction.create({:name => name, :description => description, :price => price, :season => season, :tag_ids => tag_ids, :id => nil})
   if @attraction.save()
     @attractions = Attraction.all()
@@ -82,7 +81,6 @@ delete('/attractions/:id/edit') do
   erb(:attraction_form)
 end
 
-
 patch('/attractions/:id/edit') do
   name = params[:name]
   description = params[:description]
@@ -93,7 +91,6 @@ patch('/attractions/:id/edit') do
   remove_tags = params[:remove_tag_ids]
   @attraction = Attraction.find(params[:id].to_i)
   @attraction.custom_update(name, description, season, price, tag_ids, remove_seasons, remove_tags)
-
   @attractions = Attraction.all()
   @tags = Tag.all()
   erb(:attraction_form)
@@ -135,15 +132,5 @@ patch ('/search') do
   else
     @prices_list = ""
   end
-
-  # @attractions = []
-  # tag_ids.each do |id|
-  #   tag = Tag.find(id)
-  #   attractions = tag.attractions
-  #   attractions.each do |attraction|
-  #     @attractions.push(attraction)
-  #   end
-  # end
-
   erb(:searching_results)
 end
