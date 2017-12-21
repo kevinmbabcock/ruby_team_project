@@ -7,7 +7,7 @@ get ("/") do
   attractions = Attraction.all()
   @attractions = attractions.sort { |a,b| a.name <=> b.name}
   tags = Tag.all()
-  @tags = tags.sort { |a,b| a.name <=> b.name}
+  @tags = tags.sort_by { |a| a.name }
   erb(:index)
 end
 
@@ -29,8 +29,7 @@ patch ("/tag_form") do
   name = params[:name]
   @tag = Tag.create({:name => name, :id => nil})
   if @tag.save()
-    @tags = Tag.all()
-    erb(:tag_form)
+    redirect("/tag_form")
   else
     @error_message1 = "No more than 25 characters"
     @error_message2 = "No blank input"
@@ -46,11 +45,7 @@ patch ('/attraction_form') do
   tag_ids = params[:tag_ids]
   @attraction = Attraction.create({:name => name, :description => description, :price => price, :season => season, :tag_ids => tag_ids, :id => nil})
   if @attraction.save()
-    attractions = Attraction.all()
-    @attractions = attractions.sort { |a,b| a.name <=> b.name}
-    tags = Tag.all()
-    @tags = tags.sort { |a,b| a.name <=> b.name}
-    erb(:attraction_form)
+    redirect("/attraction_form")
   else
     @error_message1 = "No more than 50 characters for name and 200 characters for description"
     @error_message2 = "No blank inputs"
@@ -66,18 +61,14 @@ end
 delete('/tags/:id/edit') do
   @tag = Tag.find(params[:id].to_i)
   @tag.delete()
-  tags = Tag.all()
-  @tags = tags.sort { |a,b| a.name <=> b.name}
-  erb(:tag_form)
+  redirect("/tag_form")
 end
 
 patch('/tags/:id/edit') do
   name = params[:name]
   @tag = Tag.find(params[:id].to_i)
   @tag.update({:name => name})
-  tags = Tag.all()
-  @tags = tags.sort { |a,b| a.name <=> b.name}
-  erb(:tag_form)
+  redirect("/tag_form")
 end
 
 get ('/attractions/:id/edit') do
@@ -90,11 +81,7 @@ end
 delete('/attractions/:id/edit') do
   @attraction = Attraction.find(params[:id].to_i)
   @attraction.delete()
-  attractions = Attraction.all()
-  @attractions = attractions.sort { |a,b| a.name <=> b.name}
-  tags = Tag.all()
-  @tags = tags.sort { |a,b| a.name <=> b.name}
-  erb(:attraction_form)
+  redirect("/attraction_form")
 end
 
 patch('/attractions/:id/edit') do
@@ -107,11 +94,7 @@ patch('/attractions/:id/edit') do
   remove_tags = params[:remove_tag_ids]
   @attraction = Attraction.find(params[:id].to_i)
   @attraction.custom_update(name, description, season, price, tag_ids, remove_seasons, remove_tags)
-  attractions = Attraction.all()
-  @attractions = attractions.sort { |a,b| a.name <=> b.name}
-  tags = Tag.all()
-  @tags = tags.sort { |a,b| a.name <=> b.name}
-  erb(:attraction_form)
+  redirect("/attraction_form")
 end
 
 get ('/attractions/:id') do
