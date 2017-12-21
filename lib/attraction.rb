@@ -131,6 +131,65 @@ class Attraction < ActiveRecord::Base
     attractions
   end
 
+  def self.search_inclusive(tag_ids, seasons, minimum, maximum)
+    all_attractions = Attraction.all
+    matching_attractions = []
+
+    if tag_ids
+      tag_ids.each do |id|
+        tag = Tag.find(id)
+        new_attractions = tag.attractions
+        new_attractions.each do |attraction|
+          if matching_attractions.include?(attraction)
+            #do nothing
+          else
+            matching_attractions.push(attraction)
+          end
+        end
+      end
+      tag_ids.each do |id|
+        tag = Tag.find(id)
+        matching_attractions.keep_if do |attraction|
+          attraction.tags.include?(tag)
+        end
+      end
+    end
+
+    if seasons
+      matching_attractions.each do |attraction|
+        if attraction.season
+          seasons.each do |each_season|
+            if attraction.season.include?(each_season)
+              if matching_attractions.include?(attraction)
+                #do nothing
+              else
+                matching_attractions.push(attraction)
+              end
+            end
+          end
+          seasons.each do |each_season|
+            matching_attractions.keep_if do |attraction|
+              if attraction.season.any?
+                attraction.season.include?(each_season)
+              end
+            end
+          end
+        end
+      end
+    end
+
+    if maximum == 0.0 && minimum == 0.0
+      #do nothing
+    elsif minimum > 0.0 && maximum != 0.0 #if user fills in both maximum and minimum values
+
+    elsif minimum > 0.0 && maximum == 0.0 #if user only fills in minimum value
+
+    elsif minimum == 0.0 && maximum > 0.0 #if user only fills in maximum value
+
+    end
+    matching_attractions
+  end
+
   private
 
   def capitalize_name
