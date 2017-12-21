@@ -22,6 +22,8 @@ This program contains many of the popular activities around Seattle, and lets th
 ## Known Bugs
 
 * Uniqueness validation for names of tags and attractions is not fully functional
+* Price is not displayed to two decimal places in search results page
+* User cannot input 0 as minimum value in search. Must be left blank if this is desired input.
 
 ## Support and contact details
 
