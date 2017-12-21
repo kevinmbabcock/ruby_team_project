@@ -21,9 +21,17 @@ class Attraction < ActiveRecord::Base
       new_description = self.description
     end
     if seasons
-      new_seasons = self.season
+      if self.season
+        new_seasons = self.season
+      else
+        new_seasons = []
+      end
       seasons.each do |season|
-        new_seasons.push(season)
+        if new_seasons.include?(season)
+          #do nothing
+        else
+          new_seasons.push(season)
+        end
       end
     else
       new_seasons = self.season
