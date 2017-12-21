@@ -134,3 +134,7 @@ em {
 h5 {
   color: #008CBA;
 }
+
+.error {
+  text-align: center;
+}
